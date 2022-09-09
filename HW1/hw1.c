@@ -79,6 +79,7 @@ void question2(size_t count, students *student){
             lastnames[j+1] = lastnames[j];
             j--;
         }
+        // Setting the next index of each array to be the next key value.
         topgpa[j+1] = key1;
         firstnames[j+1] = key2;
         lastnames[j+1] = key3;
@@ -131,7 +132,7 @@ void question4(size_t count, students *student){
 }
 
 void question5(size_t count, students *student){
-
+    // Declaring all variables.
     int i = 0, j = 0, k = 0, l = 0, n = 0, o = 0, p = 0, q = 0;
     size_t counter = count;
     char *cs[100], *h[100], *b[100], *m[100], *ece[100]; 
@@ -140,7 +141,10 @@ void question5(size_t count, students *student){
     char temp3[] = "Biology";
     char temp4[] = "Math";
     char temp5[] = "ECE";
-
+    /*
+     Loop through the struct searching for each different department. Once one of these if statements
+     are true add that advisor to respected array and add one to that departments count.
+    */
     for(i=0; i<count; i++){
         if(strcmp(student[i].major, temp) == 0){
             cs[l] = student[i].advisor;
@@ -159,6 +163,10 @@ void question5(size_t count, students *student){
             q++;
         }
     }
+    /*
+     Same algorithm as used in question1() to remove dupulicates from array for each array containing 
+     the advisors per department. Repeated for each departments array due to different array lengths.
+    */
     for(i=0; i<l; i++){
         for(j=(i+1); j<l; j++){
             if(strcmp(cs[i], cs[j]) == 0){
@@ -214,7 +222,7 @@ void question5(size_t count, students *student){
             }
         }
     }
-
+    // Print results.
     printf("---- QUESTION 5 ----\n");
     printf("Total number of advisors per department:\n\n");
     printf("%s: %d\n\n", temp, l);
@@ -266,7 +274,7 @@ int main(){
 
     // Print the total amount of records in the file.
     printf("%ld students.\n\n", rowcount);
-
+    // Calling each function. 
     question1(rowcount, student);
     question2(rowcount, student);
     question3(rowcount, student);
