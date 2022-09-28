@@ -31,9 +31,10 @@ void traverseFiles(unsigned char *usrpath){
         exit (-1);
     }
 
+    int count = 1;
     while((dp = readdir(dir)) != NULL){
         if(strcmp(dp->d_name, ".") != 0 && strcmp(dp->d_name, "..") != 0){
-            printf("%s\n", dp->d_name);
+            printf("[%d] %s (%s)\n", count, dp->d_name, filetype(dp->d_type));
 
             char *type = filetype(dp->d_type);
 
@@ -44,6 +45,7 @@ void traverseFiles(unsigned char *usrpath){
                 strcat(path, dp->d_name);
                 traverseFiles(path);
             }
+            count++;
         }
     }
     closedir(dir);
