@@ -19,6 +19,11 @@ char *filetype(unsigned char type) {
     return str;
 }
 
+/*
+    Function accepts an unsigned char pointer that points to the given directory path.
+    This will then open and read all contents contained in this directory and prints all
+    files and all sub-directory files contained.
+*/
 void traverseFiles(unsigned char *usrpath){
     printf("%s\n", usrpath);
     char path[1000];
@@ -31,6 +36,7 @@ void traverseFiles(unsigned char *usrpath){
         exit (-1);
     }
 
+    // Loop through the files in the given directory and print all directory file and sub-directory files.
     int count = 1;
     while((dp = readdir(dir)) != NULL){
         if(strcmp(dp->d_name, ".") != 0 && strcmp(dp->d_name, "..") != 0){
@@ -38,6 +44,7 @@ void traverseFiles(unsigned char *usrpath){
 
             char *type = filetype(dp->d_type);
 
+            // Check to see if a sub-directory. If so, form a new path and call the function again.
             if(strcmp(type, "directory") == 0){
                 // Construct a new path from basePath.
                 strcpy(path, usrpath);
@@ -54,15 +61,18 @@ void traverseFiles(unsigned char *usrpath){
 int main (int argc, char **argv) {
     struct dirent *dirent;
     DIR *parentDir;
+    // Used to assign to argv[1], which is the given name of directory.
     unsigned char *usrpath;
     usrpath = malloc(strlen(argv[1]) + 1);
     strcpy(usrpath, argv[1]);
 
+    // Check to make sure the user entered the command correctly.
     if (argc < 2) {
         printf ("Usage: %s <dirname>\n", argv[0]);
         exit(-1);
     }
 
+    // Call function to traverse and print all files in given directory and and sub-directories included in given path.
     traverseFiles(usrpath);
 
     return 0;
