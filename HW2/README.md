@@ -1,0 +1,11 @@
+CS332: HW2
+
+This assignment asked up to write a program that will traverse all the files and sub-directories of a given directory name. If no name is given, the program should start at the current directory of which the source code is contained in. On top of this, The assignment also asked us to be able to include extra arguments in the command line argument. -S should list all the files as well as their size in bytes, last time they were accessed, and the files permissions. -s (file size in bytes) should list all files that are less than or equal to the given file size in the command argument. -f (file pattern)(depth) should list only the files specified by the pattern given as well as within the depth thats given in the command argument. The assignment also asked us to make use of at least one function pointer which I used to call my recursive listing function "listfiles()" from my "checkargs()" function.
+
+I used the Vulcan server to run all my code because VSCode kept giving me errors with the fileType() function. On the Vulcan these errors all went away and the code compiled and ran perfectly fine with the exception of one warning. This warning doesnt cause any issues to the functionallity of the code so just ignore the warning when testing.
+
+This file is submitted with a Makefile which can be used to compile and run the code with none of the extra arguments so this will just list all files and directories in the current directory. You can execute this by typing "make run".
+
+To test the other functionallity of the code you can compile my code using "gcc -o hw2 hw2.c" and run the code with "./hw2 (directory name)" which would be with no extra arguments. Or you can run it with "./hw2 (directory name) (-S, -s(file size), -f(file pattern)(depth))" and the -S, -s, -f arguments can be places in whatever order necessary. 
+
+The indentation part of the code prints a little weird because it will include random files from the main directory in some of the sub-directories but I put an index counter for each directory/sub-directory so by looking at these you can tell that they are being included in the proper directory but are just printed out weird for whatever reason.
