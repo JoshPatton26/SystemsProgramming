@@ -16,10 +16,12 @@ long long showInfo(char *givenpath);
 
 static char *lastaccess = "";
 static char permissions[100];
+char *filepattern = "";
+char *patternmatch = "";
 static bool cs = false;
 static bool s = false;
 static bool flag = false;
-static int  indcount = 0, maxsize = 0;
+static int  indcount = 0, maxsize = 0, depth = 0, filedepth = 0;
 
 char *filetype(unsigned char type) {
     char *str;
@@ -75,10 +77,27 @@ void traverseFiles(unsigned char *usrpath){
                 printf("\t");
             }
 
-            if(cs == true && s == true){
+            if(cs == true && s == true && flag == true){
+                patternmatch = strstr(dp->d_name, filepattern);
+                if(patternmatch && depth == filedepth && filesize <= maxsize){
+                    printf("[%d] %s (%s) \t %lld bytes \t Last accessed at: %s \t Permissions: %s\n", 
+                    count, dp->d_name, filetype(dp->d_type), filesize, lastaccess, permissions);
+                }
+            }else if(cs == true && s == true){
                 if(filesize <= maxsize){
                     printf("[%d] %s (%s) \t %lld bytes \t Last accessed at: %s \t Permissions: %s\n", 
                 count, dp->d_name, filetype(dp->d_type), filesize, lastaccess, permissions);
+                }
+            }else if(cs == true && flag == true){
+                patternmatch = strstr(dp->d_name, filepattern);
+                if(patternmatch && depth == filedepth){
+                    printf("[%d] %s (%s) \t %lld bytes \t Last accessed at: %s \t Permissions: %s\n", 
+                    count, dp->d_name, filetype(dp->d_type), filesize, lastaccess, permissions);
+                }
+            }else if(s == true && flag == true){
+                patternmatch = strstr(dp->d_name, filepattern);
+                if(patternmatch && depth == filedepth && filesize <= maxsize){
+                    printf("[%d] %s (%s) \t %lld bytes\n", count, dp->d_name, filetype(dp->d_type), filesize);
                 }
             }else if(cs == true){
                 printf("[%d] %s (%s) \t %lld bytes \t Last accessed at: %s \t Permissions: %s\n", 
@@ -89,8 +108,10 @@ void traverseFiles(unsigned char *usrpath){
                     count, dp->d_name, filetype(dp->d_type), filesize);
                 }
             }else if(flag == true){
-                // Wasnt able to get this working... Ran out of time.
-                printf("[%d] %s (%s)\n", count, dp->d_name, filetype(dp->d_type));
+                patternmatch = strstr(dp->d_name, filepattern);
+                if(patternmatch && depth == filedepth){
+                    printf("%s (%s)\n", dp->d_name, filetype(dp->d_type));
+                }
             }else{
                 printf("[%d] %s (%s)\n", count, dp->d_name, filetype(dp->d_type));
             }
@@ -158,23 +179,19 @@ long long showInfo(char *givenpath){
 */
 void checkargs(int argc, char **argv, unsigned char *usrpath, MYFUNC *f){
     int option;
-    while((option = getopt(argc, argv, "Ss:f")) != -1){
+    while((option = getopt(argc, argv, "Ss:f:")) != -1){
         switch(option){
             case 'S':
-                printf("This command contains -S command.\n");
                 cs = true;
-                printf("%d\n", cs);
                 break;
             case 's':
-                printf("This command contains -s command.\n");
                 s = true;
                 maxsize = atoi(optarg);
-                printf("%d %d\n", s, maxsize);
                 break;
             case 'f':
-                printf("This command contains -f command.\n");
                 flag = true;
-                printf("%d\n", flag);
+                filepattern = (optarg);
+                depth = atoi(argv[optind]);
                 break;
             default:
                 printf("Error\n");
