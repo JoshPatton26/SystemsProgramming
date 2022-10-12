@@ -1,4 +1,4 @@
-# CS332-SystemsProgramming
+# SystemsProgramming
 
 This repository contains all my work from the CS332 Systems Programming course at The University of Alabama at Birmingham. The entire repository is 
 written in C using the Vulcan server to compile and run my code. For those who can't access the Vulcan, WSL with Ubuntu will compile and run the code 
