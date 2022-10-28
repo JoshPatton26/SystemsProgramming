@@ -1,0 +1,9 @@
+This assignment asked us to extend the HW2 assignment by adding a new argument flag that allos the program to execute a Linux command. The -e "linux command" flag uses the fork-wait-exec method to create a child process which executes the Linux command while the parent process waits for the child process to terminate successfully. This argument is also supposed to be used in any combination with all the other arguments taht were implemented in HW2.
+
+I used the Vulcan server to run all my code because VSCode kept giving me errors with the fileType() function. On the Vulcan these errors all went away and the code compiled and ran perfectly fine with the exception of one warning. This warning doesnt cause any issues to the functionallity of the code so just ignore the warning when testing.
+
+This file is submitted with a Makefile which can be used to compile and run the code with none of the extra arguments so this will just list all files and directories in the current directory. You can execute this by typing "make run".
+
+To test the other functionallity of the code you can compile my code using "gcc -o hw3 hw3.c" and run the code with "./hw3 (directory name)" which would be with no extra arguments. Or you can run it with "./hw2 (directory name) (-S, -s(file size), -f(file pattern)(depth), -e(Linux command))" and the -S, -s, -f, -e arguments can be used in whatever combination you want.
+
+The indentation part of the code prints a little weird because it will include random files from the main directory in some of the sub-directories but I put an index counter for each directory/sub-directory so by looking at these you can tell that they are being included in the proper directory but are just printed out weird for whatever reason.
