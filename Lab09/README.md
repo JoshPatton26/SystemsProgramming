@@ -1,0 +1,5 @@
+This assignment asked me to modify a given source code, that uses the fork-exec-wait method, and allow for Control-C, Control-Z signals to interrupt or suspend the parent process, until the Control-\ signal is given to quit the program. I combined some code from the source code sighandler.c to the code in forkexecvp.c file to make my program recognize when a signal is given by the user as well as run an infinite for loop to give the user the opportunity to enter the signals listed above. 
+
+I ran my code on the Vulcan server which all seemed to run fine with no errors or warnings on my local machine. 
+
+To test my code you can compile it by "gcc -o lab09 lab09.c" and to run it use "./lab09 (Linux Cmd)". I tested mine using the 'ls' command which executed fine then hit the infinite loop to where I was able to enter the given signals which returned the correct signal number, and when Control-\ was entered it terminated my code.
