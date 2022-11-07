@@ -90,15 +90,15 @@ int main(int argc, char **argv) {
         perror("exec");
         exit(-1);
       } else if (pid > 0) { /* this is the parent process */
-        printf("Child started at %s", ctime(&t1));
-        printf("Wait for the child process to terminate\n");
+        //printf("Child started at %s", ctime(&t1));
+        //printf("Wait for the child process to terminate\n");
         wait(&status); /* wait for the child process to terminate */
         time(&t2);
-        printf("Child ended at %s", ctime(&t2));
+        //printf("Child ended at %s", ctime(&t2));
         if (WIFEXITED(status)) { /* child process terminated normally */
-	  printf("Child process exited with status = %d\n", WEXITSTATUS(status));
+	  //printf("Child process exited with status = %d\n", WEXITSTATUS(status));
         } else { /* child process did not terminate normally */
-	  printf("Child process did not terminate normally!\n");
+	  //printf("Child process did not terminate normally!\n");
 	  /* look at the man page for wait (man 2 wait) to determine
 	     how the child process was terminated */
         }
