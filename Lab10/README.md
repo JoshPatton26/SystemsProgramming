@@ -1,0 +1,5 @@
+This assignment wanted us to I/O redirection to change the output from the standard output stream (stdout) to accept the exec statement results, as well as the standard error stream (stderr) to accept the errors that came with the exec statement. Extending what we did in Lab07 by using the fork-wait-exec method, the child process will redirect the streams from stdout and stderr to a .out file and a .err file with the file name being the process ID of the current execution.
+
+I ran my code on the Vulcan server which all seemed to run fine with no errors or warnings on my local machine.
+
+To test my code you can compile it by "gcc -o lab10 lab010.c" and to run it use "./lab10 (testfile)". I tested mine using the commands given in the lab pdf all of which were printed out to the .out file and the errors that went with them were printed to the .err file.
