@@ -22,6 +22,7 @@ Welcome to the repository for the <b>Systems Programming</b> course at The Unive
   <li> MSYS2 MinGW 64x gcc Compiler </li>
 </ul><br>
 
+<h2></h2>
 <footer>
   <b>Note:</b> The content in this repository represents my work completed during the <b>Systems Programming</b> course at UAB. UAB owns the rights the the Vulcan server, unauthorized access is prohibited. The projects and assignments delve into various systems programming concepts, aiming to provide a comprehensive understanding of modern computing systems. While VSCode serves as the primary IDE for code editing, the actual compilation and execution might require Vulcan or WSL with Ubuntu.
 </footer>
