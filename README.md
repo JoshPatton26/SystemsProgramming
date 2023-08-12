@@ -1,5 +1,5 @@
 # Systems Programming
-Welcome to the repository for the <b>CS332 Systems Programming</b> course at The University of Alabama at Birmingham (UAB). This repository houses all of my coursework completed during the course, with a focus on programming in the C language. The projects and assignments were developed using the Vulcan server (Owned by UAB) for compilation and execution. If Vulcan is inaccessible, the code can be compiled and run using Windows Subsystem for Linux (WSL) with Ubuntu. I utilized Visual Studio Code (VSCode) as my IDE for coding, leveraging MSYS2 MinGW 64x as my compiler to manage included libraries for each project.
+Welcome to the repository for the <b>Systems Programming</b> course at The University of Alabama at Birmingham (UAB). This repository houses all of my coursework completed during the course, with a focus on programming in the C language. The projects and assignments were developed using the Vulcan server (Owned by UAB) for compilation and execution. If Vulcan is inaccessible, the code can be compiled and run using Windows Subsystem for Linux (WSL) with Ubuntu. I utilized Visual Studio Code (VSCode) as my IDE for coding, leveraging MSYS2 MinGW 64x as my compiler to manage included libraries for each project.
 
 <h3> Course Topics </h3>
 <ul>
